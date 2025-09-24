@@ -1,7 +1,11 @@
-1) ตั้งค่า Switch S1 (Office1 — พอร์ตไป R1 = Fa0/1, ไป S2 = Fa0/2, PC-A = Fa0/3)
 
-คัดลอก–วางทั้งหมดนี้ลงที่ CLI ของ S1
+# Network Device Configuration (Cisco Packet Tracer Lab)
+# Author: Wisawa
+# Description: Full CLI configuration for Switches and Routers in the lab
 
+## 1) Switch S1 (Office1 — Ports: Fa0/1 to R1, Fa0/2 to S2, Fa0/3 to PC-A)
+
+```
 enable
 configure terminal
 hostname S1
@@ -35,11 +39,13 @@ interface FastEthernet0/2
 
 end
 write memory
+```
 
-2) ตั้งค่า Switch S2 (Office2 — พอร์ตไป S1 = Fa0/1, PC-C = Fa0/2 (VLAN10), PC-B = Fa0/3 (VLAN20))
+---
 
-คัดลอก–วางทั้งหมดนี้ลงที่ CLI ของ S2
+## 2) Switch S2 (Office2 — Ports: Fa0/1 to S1, Fa0/2 to PC-C VLAN10, Fa0/3 to PC-B VLAN20)
 
+```
 enable
 configure terminal
 hostname S2
@@ -73,11 +79,13 @@ interface FastEthernet0/1
 
 end
 write memory
+```
 
-3) ตั้งค่า Router R1 (เป็น Router ที่ interface ไป Switch เป็น trunk/subinterfaces และมี WAN ไป R2)
+---
 
-คัดลอก–วางทั้งหมดนี้ลงที่ CLI ของ R1
+## 3) Router R1 (Router-on-a-stick + WAN to R2)
 
+```
 enable
 configure terminal
 hostname R1
@@ -90,7 +98,6 @@ interface GigabitEthernet0/0/1
 interface GigabitEthernet0/0/1.10
  encapsulation dot1Q 10
  ip address 192.15.10.1 255.255.255.0
-! no shutdown ไม่จำเป็นสำหรับ subint แต่ใส่ปกติ
  exit
 
 interface GigabitEthernet0/0/1.20
@@ -109,14 +116,13 @@ ip route 209.165.200.0 255.255.255.224 209.165.200.225
 
 end
 write memory
+```
 
+---
 
-หมายเหตุ: ถ้าราเตอร์ใน Packet Tracer มี interface ชื่ออื่น (เช่น GigabitEthernet0/0) ให้ปรับชื่อให้ตรงกับอุปกรณ์ของคุณก่อนวาง
+## 4) Router R2 (WAN + Loopback1)
 
-4) ตั้งค่า Router R2 (ต่อกับ R1 ทาง WAN และมี Loopback1)
-
-คัดลอก–วางทั้งหมดนี้ลงที่ CLI ของ R2
-
+```
 enable
 configure terminal
 hostname R2
@@ -138,3 +144,12 @@ ip route 192.15.20.0 255.255.255.0 209.165.200.230
 
 end
 write memory
+```
+
+---
+
+## หมายเหตุ
+- ตรวจสอบชื่อ interface ของอุปกรณ์ (ใน Packet Tracer อาจต่างกัน เช่น `FastEthernet` หรือ `GigabitEthernet`).
+- หลังจาก config ทุกอย่างแล้ว ให้ทดสอบ:
+  - PC-A / PC-B / PC-C ping ไป 192.15.10.1 หรือ 192.15.20.1 ได้
+  - ping ข้าม network ถึง 209.165.200.1 (Loopback ของ R2)
