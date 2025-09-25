@@ -4,31 +4,38 @@
 
 ## 🖥️ End Devices
 
-### PC-A (Office2)
-- IP Address: `192.15.1.2`
-- Subnet Mask: `255.255.255.0`
-- Default Gateway: `192.15.1.1`
+### 💻 PC-A (Office2)
+- IP Address: `192.15.1.2`  
+- Subnet Mask: `255.255.255.0`  
+- Default Gateway: `192.15.1.1`  
 
-### PC-B (Office1)
-- IP Address: `192.15.2.2`
-- Subnet Mask: `255.255.255.0`
-- Default Gateway: `192.15.2.1`
+---
 
-### PC-C (Office1)
-- IP Address: `192.15.1.3`
-- Subnet Mask: `255.255.255.0`
-- Default Gateway: `192.15.1.1`
+### 💻 PC-B (Office1)
+- IP Address: `192.15.2.2`  
+- Subnet Mask: `255.255.255.0`  
+- Default Gateway: `192.15.2.1`  
 
-### Web Server
-- IP Address: `209.165.200.34`
-- Subnet Mask: `255.255.255.224`
-- Default Gateway: `209.165.200.33`
+---
+
+### 💻 PC-C (Office1)
+- IP Address: `192.15.1.3`  
+- Subnet Mask: `255.255.255.0`  
+- Default Gateway: `192.15.1.1`  
+
+---
+
+### 🌐 Web Server
+- IP Address: `209.165.200.34`  
+- Subnet Mask: `255.255.255.224`  
+- Default Gateway: `209.165.200.33`  
 
 ---
 
 ## 🔌 Switch Configuration
 
-### Switch S1 (Office2)
+### 🟦 Switch S1 (Office2)
+
 ```bash
 enable
 conf t
@@ -54,9 +61,13 @@ interface f0/3
  switchport mode access
  switchport access vlan 10
 exit
-Switch S2 (Office1)
-bash
-Copy code
+```
+
+---
+
+### 🟩 Switch S2 (Office1)
+
+```bash
 enable
 conf t
 hostname S2
@@ -82,10 +93,15 @@ interface f0/3
  switchport mode access
  switchport access vlan 20
 exit
-🌐 Router Configuration
-Router R1 (ISR4331 - Data Center Room)
-bash
-Copy code
+```
+
+---
+
+## 🌐 Router Configuration
+
+### 🟥 Router R1 (ISR4331 - Data Center Room)
+
+```bash
 enable
 conf t
 hostname R1
@@ -106,9 +122,13 @@ interface g0/0/1.2
 exit
 
 ip route 0.0.0.0 0.0.0.0 209.165.200.225
-Router R2 (ISR4331 - Web Server Side)
-bash
-Copy code
+```
+
+---
+
+### 🟨 Router R2 (ISR4331 - Web Server Side)
+
+```bash
 enable
 conf t
 hostname R2
@@ -128,3 +148,5 @@ interface loopback1
 exit
 
 ip route 0.0.0.0 0.0.0.0 209.165.200.230
+```
+
