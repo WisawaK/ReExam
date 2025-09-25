@@ -1,25 +1,35 @@
+# 🌐 Network Configuration Project
+
+---
+
+## 🖥️ End Devices
+
 ### PC-A (Office2)
-IP Address: 192.15.1.2
-Subnet Mask: 255.255.255.0
-Default Gateway: 192.15.1.1
+- IP Address: `192.15.1.2`
+- Subnet Mask: `255.255.255.0`
+- Default Gateway: `192.15.1.1`
 
-# PC-B (Office1)
-IP Address: 192.15.2.2
-Subnet Mask: 255.255.255.0
-Default Gateway: 192.15.2.1
+### PC-B (Office1)
+- IP Address: `192.15.2.2`
+- Subnet Mask: `255.255.255.0`
+- Default Gateway: `192.15.2.1`
 
-# PC-C (Office1)
-IP Address: 192.15.1.3
-Subnet Mask: 255.255.255.0
-Default Gateway: 192.15.1.1
+### PC-C (Office1)
+- IP Address: `192.15.1.3`
+- Subnet Mask: `255.255.255.0`
+- Default Gateway: `192.15.1.1`
 
-# Web Server
-IP Address: 209.165.200.34
-Subnet Mask: 255.255.255.224
-Default Gateway: 209.165.200.33
-🔌 Switch S1 (Office2)
-bash
-Copy code
+### Web Server
+- IP Address: `209.165.200.34`
+- Subnet Mask: `255.255.255.224`
+- Default Gateway: `209.165.200.33`
+
+---
+
+## 🔌 Switch Configuration
+
+### Switch S1 (Office2)
+```bash
 enable
 conf t
 hostname S1
@@ -44,7 +54,7 @@ interface f0/3
  switchport mode access
  switchport access vlan 10
 exit
-🔌 Switch S2 (Office1)
+Switch S2 (Office1)
 bash
 Copy code
 enable
@@ -72,7 +82,8 @@ interface f0/3
  switchport mode access
  switchport access vlan 20
 exit
-🌐 Router R1 (ISR4331 - Data Center Room)
+🌐 Router Configuration
+Router R1 (ISR4331 - Data Center Room)
 bash
 Copy code
 enable
@@ -95,7 +106,7 @@ interface g0/0/1.2
 exit
 
 ip route 0.0.0.0 0.0.0.0 209.165.200.225
-🌐 Router R2 (ISR4331 - Web Server Side)
+Router R2 (ISR4331 - Web Server Side)
 bash
 Copy code
 enable
