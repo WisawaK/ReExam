@@ -149,4 +149,6 @@ exit
 
 ip route 0.0.0.0 0.0.0.0 209.165.200.230
 ```
-
+### 🟥 Router R1 (ISR4331 - Data Center Room)
+```bash
+enable configure terminal hostname R2 ! WAN interface interface GigabitEthernet0/0/0 ip address 209.165.200.225 255.255.255.248 no shutdown exit ! Loopback เป็นเป้าหมายที่ต้อง ping ถึง interface Loopback1 ip address 209.165.200.1 255.255.255.224 exit ! Static routes กลับไปที่ LAN (ผ่าน R1) ip route 192.15.10.0 255.255.255.0 209.165.200.230 ip route 192.15.20.0 255.255.255.0 209.165.200.230 end write memory
